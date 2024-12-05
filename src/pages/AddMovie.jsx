@@ -69,7 +69,7 @@ const AddMovie = () => {
     });
     setRating(0);
 
-    fetch("http://localhost:5000/movie", {
+    fetch("http://localhost:5000/movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",
