@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import profile from "../assets/blank-profile-picture-973460_640.png"
+import profile from "../assets/blank-profile-picture-973460_640.png";
 
 const Navbar = () => {
   const location = useLocation();
-  const {user, logOut} = useContext(AuthContext);
-  console.log(user);
+  const { user, logOut } = useContext(AuthContext);
 
   const links = (
     <>
@@ -64,7 +63,7 @@ const Navbar = () => {
       </li>
     </>
   );
-  
+
   return (
     <div className="navbar text-[#DCF2F1] ">
       <div className="navbar-start  ">
@@ -103,8 +102,7 @@ const Navbar = () => {
           <>
             <div className="relative group hidden md:block">
               <img
-                src={user.photoURL || { profile }}
-                
+                src={user?.photoURL || {profile}}
                 alt="Profile"
                 className="border-2 border-[#e3e5f3d5] w-11 h-11 mr-2 rounded-full object-cover cursor-pointer ml-16"
               />

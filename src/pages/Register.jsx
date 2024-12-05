@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 import { useContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, signInWithPopup, updateProfile, } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createNewUser, setUser, auth } = useContext(AuthContext);
@@ -26,6 +26,20 @@ const Register = () => {
     }
   }, [auth, navigate]);
 
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        setError("");
+        navigate("/");
+      })
+
+      .catch((error) => {
+        console.log("Google Login Error:", error.message);
+        setError("Failed to login with Google.");
+      });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // get data from form
@@ -43,12 +57,17 @@ const Register = () => {
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
+        
+
         const profile = {
-          photoURL: photo,
-          displayName: name,
+            displayName: name,
+            photoURL: photo,
+
         };
         updateProfile(auth.currentUser, profile)
-          .then(() => {})
+          .then(() => {
+
+          })
           .catch((error) => console.log("user profile update error"));
         setUser(user);
         setError("");
@@ -59,20 +78,7 @@ const Register = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        setError("");
-        navigate("/");
-      })
-
-      .catch((error) => {
-        console.log("Google Login Error:", error.message);
-        setError("Failed to login with Google.");
-      });
-  };
+  
 
   return (
     <div className=" flex justify-center items-center md:py-7  bg-[#f2f4ff]">

@@ -7,11 +7,14 @@ import Register from "../pages/Register";
 import AllMovies from "../pages/AllMovies";
 import AddMovie from "../pages/AddMovie";
 import MyFavorites from "../pages/MyFavorites";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayouts></MainLayouts>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
@@ -23,11 +26,11 @@ const router = createBrowserRouter([
         },
         {
           path: "/add-movie",
-          element: <AddMovie></AddMovie>,
+          element: <PrivateRoute><AddMovie></AddMovie></PrivateRoute>,
         },
         {
           path: "/my-favorites",
-          element: <MyFavorites></MyFavorites>,
+          element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
         },
         {
           path: "/auth",
