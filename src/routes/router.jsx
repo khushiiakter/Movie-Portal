@@ -9,6 +9,7 @@ import AddMovie from "../pages/AddMovie";
 import MyFavorites from "../pages/MyFavorites";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
+import MovieDetails from "../pages/MovieDetails";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         {
           path: "/all-movie",
           element: <AllMovies></AllMovies>,
+          loader: () => fetch('http://localhost:5000/movies')
         },
         {
           path: "/add-movie",
@@ -32,6 +34,15 @@ const router = createBrowserRouter([
         {
           path: "/my-favorites",
           element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
+        },
+        {
+          path: "/movie-details/:id",
+          element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
+          loader: async ({params}) =>{
+            const res = await fetch(`http://localhost:5000/movies/${params.id}`);
+            const data = await res.json();
+            return data;
+          }
         },
         {
           path: "/auth",

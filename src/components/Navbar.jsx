@@ -12,12 +12,12 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          onClick={(e) => e.currentTarget.blur()}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-              : "bg-[#0F1035] text-[#e1e4fa]   rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]  "
-          }
+          // onClick={(e) => e.currentTarget.blur()}
+          // className={({ isActive }) =>
+          //   isActive
+          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
+          //     : "bg-[#0F1035] text-[#e1e4fa]   rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]  "
+          // }
         >
           Home
         </NavLink>
@@ -25,12 +25,12 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/all-movie"
-          onClick={(e) => e.currentTarget.blur()}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#e1e4fa] text-[#0F1035]    rounded-lg  "
-              : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]    "
-          }
+          // onClick={(e) => e.currentTarget.blur()}
+          // className={({ isActive }) =>
+          //   isActive
+          //     ? "bg-[#e1e4fa] text-[#0F1035]    rounded-lg  "
+          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]    "
+          // }
         >
           All Movies
         </NavLink>
@@ -38,12 +38,12 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/add-movie"
-          onClick={(e) => e.currentTarget.blur()}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-              : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
-          }
+          // onClick={(e) => e.currentTarget.blur()}
+          // className={({ isActive }) =>
+          //   isActive
+          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
+          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
+          // }
         >
           Add Movie
         </NavLink>
@@ -51,12 +51,12 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/my-favorites"
-          onClick={(e) => e.currentTarget.blur()}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-              : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
-          }
+          // onClick={(e) => e.currentTarget.blur()}
+          // className={({ isActive }) =>
+          //   isActive
+          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
+          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
+          // }
         >
           My Favorites
         </NavLink>
@@ -65,7 +65,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar text-[#DCF2F1] ">
+    <div className="navbar  text-[#DCF2F1] ">
       <div className="navbar-start  ">
         <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

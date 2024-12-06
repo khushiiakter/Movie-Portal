@@ -5,11 +5,12 @@ import Navbar from "../components/Navbar";
 const MainLayouts = () => {
     return (
         <div>
-            <nav className="md:px-6 bg-[#0F1035]  -px-4">
+            <nav className="md:px-6 bg-[#0F1035] -px-4">
                 <Navbar></Navbar>
+                
             </nav>
 
-            <section>
+            <section className="bg-black ">
                 <Outlet></Outlet>
             </section>
         </div>
