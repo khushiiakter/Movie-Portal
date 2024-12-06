@@ -10,6 +10,9 @@ import MyFavorites from "../pages/MyFavorites";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
 import MovieDetails from "../pages/MovieDetails";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import UpdateMovie from "../pages/UpdateMovie";
 
 const router = createBrowserRouter([
     {
@@ -32,8 +35,10 @@ const router = createBrowserRouter([
           element: <PrivateRoute><AddMovie></AddMovie></PrivateRoute>,
         },
         {
-          path: "/my-favorites",
-          element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
+          path: "/update-movie/:id",
+          element: <PrivateRoute><UpdateMovie></UpdateMovie></PrivateRoute>,
+          loader:  ({ params }) =>  fetch(`http://localhost:5000/movies/${params.id}`).then(res => res.json()),
+                  
         },
         {
           path: "/movie-details/:id",
@@ -44,6 +49,23 @@ const router = createBrowserRouter([
             return data;
           }
         },
+        
+        {
+          path: "/my-favorites",
+          element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
+          
+        },
+        
+        // {
+        //   path: "/my-favorites/:userEmail",
+        //   element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
+        //   loader: async ({params}) =>{
+        //     const res = await fetch(`http://localhost:5000/favorites/${params.userEmail}`);
+        //     const data = await res.json();
+        //     return data;
+        //   }
+        // },
+        
         {
           path: "/auth",
           element: <AuthLayouts></AuthLayouts>,

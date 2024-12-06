@@ -10,7 +10,7 @@ const MainLayouts = () => {
                 
             </nav>
 
-            <section className="bg-black ">
+            <section className=" min-h-screen">
                 <Outlet></Outlet>
             </section>
         </div>

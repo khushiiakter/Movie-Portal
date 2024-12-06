@@ -1,11 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Rating } from "react-simple-star-rating";
 import { AuthContext } from "../provider/AuthProvider";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
-const AddMovie = () => {
+const UpdateMovie = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [rating, setRating] = useState(0);
+
+  const movie = useLoaderData();
   const [formData, setFormData] = useState({
     poster: "",
     title: "",
@@ -14,7 +17,20 @@ const AddMovie = () => {
     year: "",
     summary: "",
   });
-
+  const [rating, setRating] = useState(0);
+  useEffect(() => {
+    if (movie) {
+      setFormData({
+        poster: movie.poster || "",
+        title: movie.title || "",
+        genre: movie.genre || "",
+        duration: movie.duration || "",
+        year: movie.year || "",
+        summary: movie.summary || "",
+      });
+      setRating(movie.rating || 0);
+    }
+  }, [movie]);
   const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi"];
   const years = ["2024", "2023", "2022", "2021", "2020"];
 
@@ -56,32 +72,28 @@ const AddMovie = () => {
     }
 
     // Submit Data
-    const movieData = { ...formData, rating, user: `${user?.email}` };
+    const updatedData = { ...formData, rating, user: `${user?.email}` };
     // console.log("Movie Data:", movieData);
     // toast.success("Movie added successfully!");
-    setFormData({
-      poster: "",
-      title: "",
-      genre: "",
-      duration: "",
-      year: "",
-      summary: "",
-    });
-    setRating(0);
 
-    fetch("http://localhost:5000/movies", {
-      method: "POST",
+    fetch(`http://localhost:5000/movies/${movie._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(movieData),
+      body: JSON.stringify(updatedData),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          toast.success("Movie added successfully!");
+        if (data.modifiedCount > 0) {
+          toast.success("Movie updated successfully!");
+          navigate("/");
+        } else {
+          toast.error("Failed to update movie.");
         }
+      })
+      .catch((error) => {
+        toast.error("An error occurred while updating the movie.");
       });
   };
 
@@ -89,7 +101,7 @@ const AddMovie = () => {
     <div className="min-h-screen bg-black text-white py-10 px-5">
       <div className="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
-          Add New Movie
+          Update Movie
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -203,7 +215,7 @@ const AddMovie = () => {
               type="submit"
               className="btn btn-primary bg-red-500 hover:bg-red-600 w-full"
             >
-              Add Movie
+              Update Movie
             </button>
           </div>
         </form>
@@ -213,4 +225,4 @@ const AddMovie = () => {
   );
 };
 
-export default AddMovie;
+export default UpdateMovie;
