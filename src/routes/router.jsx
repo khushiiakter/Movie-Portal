@@ -43,11 +43,10 @@ const router = createBrowserRouter([
         {
           path: "/movie-details/:id",
           element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
-          loader: async ({params}) =>{
-            const res = await fetch(`http://localhost:5000/movies/${params.id}`);
-            const data = await res.json();
-            return data;
-          }
+          loader: ({params}) =>
+             fetch(`http://localhost:5000/movies/${params.id}`),
+            
+          
         },
         
         {
@@ -56,15 +55,7 @@ const router = createBrowserRouter([
           
         },
         
-        // {
-        //   path: "/my-favorites/:userEmail",
-        //   element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>,
-        //   loader: async ({params}) =>{
-        //     const res = await fetch(`http://localhost:5000/favorites/${params.userEmail}`);
-        //     const data = await res.json();
-        //     return data;
-        //   }
-        // },
+       
         
         {
           path: "/auth",

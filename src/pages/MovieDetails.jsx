@@ -1,21 +1,65 @@
 import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import { AuthContext } from "../provider/AuthProvider";
-
-
 
 const MovieDetails = () => {
-  const movie = useLoaderData();
+  
   const { user } = useContext(AuthContext);
+  const movie = useLoaderData();
   const navigate = useNavigate();
 
   const { rating, summary, year, duration, genre, title, poster, _id } = movie;
 
+ 
+
+
+
+
+  // const handleDelete = () => {
+  //   fetch(`http://localhost:5000/movies/${movie._id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.deletedCount > 0) {
+  //         toast.success("Movie deleted successfully.");
+  //         navigate("/all-movie");
+  //       } else{
+  //         toast.error("Failed to delete the movie.")
+  //       }
+  //     })
+  //     .catch((error) =>{
+  //       console.error("Error fetching favoritesL:", error)
+  //       toast.error("Failed to delete.")
+  //     })
+  // };
+
+
+
+  const handleAddToFavorites = () => {
+   const { _id, ...favoriteMovie} = movie;
+   const newMovie = { ...favoriteMovie, userEmail: `${user.email}`};
+    fetch("http://localhost:5000/favorites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMovie),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        toast.success("Movie added to favorites.");
+      })
+      // .catch((error) =>{
+      //   console.error("Error fetching favoritesL:", error)
+      //   toast.error("Failed to load favorites.")
+      // })
+  };
   const handleDelete = (_id) => {
-    console.log(_id);
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -26,39 +70,40 @@ const MovieDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`http://localhost:5000/movies/${movie._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            if (data.deletedCount) {
+            if (data.success) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your Movie has been deleted.",
                 icon: "success",
               });
+              navigate("/all-movie");
+
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to delete movie",
+                icon: "error",
+              })
             }
-          });
+          })
+          .catch((error) => {
+            console.error("Error deleting movie:", error );
+            Swal.fire({
+              title: "Error!",
+              text: "Failed to delete movie",
+              icon: "error",
+            })
+            
+          })
 
         //
       }
     });
-  };
-
-  const handleAddToFavorites = () => {
-    const favoriteMovie = { ...movie, userEmail: `${user?.email}` };
-    fetch("http://localhost:5000/favorites", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(favoriteMovie),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast.success("Movie added to favorites.");
-      });
   };
 
   return (
@@ -100,7 +145,7 @@ const MovieDetails = () => {
           {/* Action Buttons */}
           <div className="flex gap-4 mt-auto">
             <button
-              onClick={() => handleDelete(_id)}
+              onClick={handleDelete}
               className="btn text-gray-400 btn-outline "
             >
               Delete Movie
@@ -109,6 +154,7 @@ const MovieDetails = () => {
             <button
               onClick={handleAddToFavorites}
               className="btn btn-outline text-gray-400"
+              disabled={!user}
             >
               Add to Favorites
             </button>
