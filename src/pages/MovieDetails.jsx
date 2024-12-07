@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import toast from "react-hot-toast";
+
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const MovieDetails = () => {
   
@@ -12,31 +13,6 @@ const MovieDetails = () => {
   const navigate = useNavigate();
 
   const { rating, summary, year, duration, genre, title, poster, _id } = movie;
-
- 
-
-
-
-
-  // const handleDelete = () => {
-  //   fetch(`http://localhost:5000/movies/${movie._id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.deletedCount > 0) {
-  //         toast.success("Movie deleted successfully.");
-  //         navigate("/all-movie");
-  //       } else{
-  //         toast.error("Failed to delete the movie.")
-  //       }
-  //     })
-  //     .catch((error) =>{
-  //       console.error("Error fetching favoritesL:", error)
-  //       toast.error("Failed to delete.")
-  //     })
-  // };
-
 
 
   const handleAddToFavorites = () => {
@@ -53,10 +29,7 @@ const MovieDetails = () => {
       .then(() => {
         toast.success("Movie added to favorites.");
       })
-      // .catch((error) =>{
-      //   console.error("Error fetching favoritesL:", error)
-      //   toast.error("Failed to load favorites.")
-      // })
+     
   };
   const handleDelete = (_id) => {
 
@@ -108,7 +81,7 @@ const MovieDetails = () => {
 
   return (
     <section className="py-10">
-      <div className="max-w-5xl mx-auto  p-6 bg-[#837e9e3f] shadow-lg rounded-lg flex flex-col md:flex-row gap-8">
+      <div className="max-w-5xl mx-auto  p-6 bg-[#070808] shadow-lg rounded-lg flex flex-col md:flex-row gap-8">
         {/* Movie Poster */}
         <div className="w-full h-[400px] md:w-2/5">
           <img
@@ -122,8 +95,8 @@ const MovieDetails = () => {
         <div className="w-full md:w-3/5 flex flex-col items-start justify-between">
           {/* Title and Meta Info */}
           <div className="mb-4">
-            <h1 className="text-4xl text-white font-bold ">{title}</h1>
-            <p className="text-gray-500 mt-5">
+            <h1 className="text-[40px] text-white font-bold ">{title}</h1>
+            <p className="text-gray-500 mt-6">
               {year} | {genre} | {duration} mins
             </p>
           </div>
@@ -138,7 +111,7 @@ const MovieDetails = () => {
 
           {/* Summary */}
           <div className="my-6">
-            <h2 className="text-xl text-white font-semibold">Overview</h2>
+            <h2 className="text-2xl text-white font-semibold">Overview</h2>
             <p className="text-gray-500 mt-2">{summary}</p>
           </div>
 
@@ -146,21 +119,21 @@ const MovieDetails = () => {
           <div className="flex gap-4 mt-auto">
             <button
               onClick={handleDelete}
-              className="btn text-gray-400 btn-outline "
+              className="btn text-gray-400 hover:bg-red-800 rounded-lg btn-outline "
             >
               Delete Movie
             </button>
             {/* <Link to={`/my-favorites/${userEmail}`}> */}
             <button
               onClick={handleAddToFavorites}
-              className="btn btn-outline text-gray-400"
+              className="btn btn-outline text-gray-400    hover:bg-[#5f1a89]  "
               disabled={!user}
             >
               Add to Favorites
             </button>
             {/* </Link> */}
             <Link to={`/update-movie/${_id}`}>
-              <button className="btn btn-outline text-gray-400">Update</button>
+              <button className="btn btn-outline text-gray-400  hover:bg-[#5f1a89]">Update</button>
             </Link>
           </div>
         </div>

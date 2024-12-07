@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
-import toast from "react-hot-toast";
+
 
 const MyFavorites = () => {
   const { user } = useContext(AuthContext);
@@ -30,27 +31,28 @@ const MyFavorites = () => {
   };
 
   return (
-    <div>
-      <h1 className="bg-red-500">Your favorite movie</h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
+    <div className="container mx-auto px-5 ">
+      <h1 className="text-white text-center text-5xl py-8 font-bold">My Favorite Movies</h1>
+
+      <div className="grid md:grid-cols-2 mt-6 lg:grid-cols-3 gap-6 grid-cols-1">
         {favorites.map((movie) => (
           <div
             key={movie._id}
-            className="   text-purple-400 rounded-2xl shadow-md overflow-hidden"
+            className="   text-white rounded-2xl shadow-md overflow-hidden"
           >
             {/* Movie Poster */}
             <div className="relative ">
               <img
-                className="w-full h-[470px] object-cover"
+                className="w-full h-[460px] object-cover"
                 src={movie.poster}
                 alt={movie.title}
               />
 
-              <div className="flex items-center absolute bottom-[0px] pl-5 pb-4">
+              <div className="flex items-center absolute bottom-0 pl-5 pb-4">
                 {/* Title and Rating */}
-                <h3 className="text-3xl  font-bold ">{movie.title}</h3>
+                <h3 className="text-4xl  font-bold ">{movie.title}</h3>
                 {/* Rating Number */}
-                <span className="ml-2 font-medium text-red-400 text-base">
+                <span className="ml-2 font-bold text-[#5f1a89] text-base">
                   ({movie.rating})
                 </span>
               </div>
@@ -72,7 +74,7 @@ const MyFavorites = () => {
 
               <button
                 onClick={() => handleDeleteFavorite(movie._id)}
-                className="  px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm"
+                className="  px-4 py-2 bg-[#5f1a89]  hover:bg-red-800  rounded-lg text-sm"
               >
                 Delete Favorite
               </button>

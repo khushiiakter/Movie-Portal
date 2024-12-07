@@ -7,16 +7,16 @@ const Movie = ({ movie }) => {
       {/* Movie Poster */}
       <div className="relative ">
         <img
-          className="w-full h-[470px] object-cover"
+          className="w-full h-[460px] object-cover"
           src={poster}
           alt={title}
         />
 
-        <div className="flex items-center absolute bottom-[0px] pl-5 pb-4">
+        <div className="flex items-center  absolute bottom-0 pl-5 pb-4">
           {/* Title and Rating */}
-          <h3 className="text-3xl  font-bold ">{title}</h3>
+          <h3 className="text-4xl  font-bold ">{title}</h3>
           {/* Rating Number */}
-          <span className="ml-2 font-medium text-red-400 text-base">
+          <span className="ml-2 font-bold text-[#5f1a89] text-base">
             ({rating})
           </span>
         </div>
@@ -36,7 +36,7 @@ const Movie = ({ movie }) => {
 
         {/* See Details Button */}
         <Link to={`/movie-details/${_id}`}>
-          <button className="  px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm">
+          <button className="  px-4 py-2 bg-[#5f1a89]  hover:bg-red-800 rounded-lg text-sm">
             See Details
           </button>
         </Link>

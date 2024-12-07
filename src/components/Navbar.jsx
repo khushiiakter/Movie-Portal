@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { Link, NavLink, useLocation } from "react-router-dom";
+
 import profile from "../assets/blank-profile-picture-973460_640.png";
 
 const Navbar = () => {
@@ -65,7 +66,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar  text-[#DCF2F1] ">
+    <div className="navbar  text-white ">
       <div className="navbar-start  ">
         <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -94,7 +95,7 @@ const Navbar = () => {
         <a className=" md:text-xl ">Movie Mania</a>
       </div>
       <div className="navbar-center  hidden lg:flex">
-        <ul className="menu menu-horizontal  px-1 text-[#e1e4fa]">{links}</ul>
+        <ul className="menu menu-horizontal  px-1 text-white">{links}</ul>
       </div>
 
       <div className="navbar-end">
@@ -110,12 +111,12 @@ const Navbar = () => {
                 className="absolute -right-4
                top-[60px] max-w-max bg-gray-800 text-white text-sm shadow-lg p-2 rounded hidden group-hover:block"
               >
-                {user.displayName || "User"}
+                {user?.displayName || "User"}
               </div>
             </div>
             <Link
               onClick={logOut}
-              className="btn bg-[#e1e4fa] text-[#0F1035] hover:bg-[#e3e5f3d5] "
+              className="btn bg-[#5f1a89] rounded-2xl px-5 text-white hover:border-white border-neutral hover:bg-black"
             >
               Log Out
             </Link>
@@ -124,13 +125,13 @@ const Navbar = () => {
           <>
             <Link
               to="/auth/login"
-              className="btn px-5 bg-[#e1e4fa] mr-3 text-[#0F1035] transition duration-300 hover:bg-[#e3e5f3d5]"
+              className="btn bg-[#5f1a89] rounded-2xl mr-2 px-5 text-white hover:border-white border-neutral hover:bg-black"
             >
               Login
             </Link>
             <Link
               to="/auth/register"
-              className="btn px-5 bg-[#e1e4fa] text-[#0F1035] transition duration-300 hover:bg-[#e3e5f3d5]"
+              className="btn bg-[#5f1a89] rounded-2xl px-5 text-white hover:border-white border-neutral hover:bg-black"
             >
               Register
             </Link>

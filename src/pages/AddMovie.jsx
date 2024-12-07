@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+
 import { Rating } from "react-simple-star-rating";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);
@@ -208,7 +209,7 @@ const AddMovie = () => {
           </div>
         </form>
       </div>
-      <Toaster />
+     
     </div>
   );
 };
