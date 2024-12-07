@@ -58,7 +58,7 @@ const Banner = () => {
           </a>
         </div>
       </div>
-      {/* https://i.ibb.co.com/Rz8rCjr/thumb-1920-238870.jpg */}
+      
       <div
         id="banner4"
         className="carousel-item w-full  relative" >
@@ -76,7 +76,7 @@ const Banner = () => {
       <div
         id="banner5"
         className="carousel-item w-full  relative" >
-        {/* <img className="w-full" src="https://i.ibb.co.com/vLVWxG8/rdt-Zok-C7l-YFUu-Gjn1z-Ga-Y4-Wr-VXU.jpg" alt="" /> */}
+     
         <img className="w-full" src="https://i.ibb.co.com/84MP6SC/thumb-1920-1119553.jpg" alt="" />
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
           <a href="#banner4" className="btn btn-circle">
