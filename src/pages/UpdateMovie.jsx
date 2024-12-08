@@ -1,99 +1,57 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { Rating } from "react-simple-star-rating";
 import { AuthContext } from "../provider/AuthProvider";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateMovie = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-
   const movie = useLoaderData();
-  const [formData, setFormData] = useState({
-    poster: "",
-    title: "",
-    genre: "",
-    duration: "",
-    year: "",
-    summary: "",
-  });
-  const [rating, setRating] = useState(0);
-  useEffect(() => {
-    if (movie) {
-      setFormData({
-        poster: movie.poster || "",
-        title: movie.title || "",
-        genre: movie.genre || "",
-        duration: movie.duration || "",
-        year: movie.year || "",
-        summary: movie.summary || "",
-      });
-      setRating(movie.rating || 0);
-    }
-  }, [movie]);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
   const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi", "Fantasy", "Romance"];
   const years = ["2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
 
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleRatingChange = (rate) => {
-    setRating(rate);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validation
-    if (!formData.poster.match(/https?:\/\/.+\.(jpg|jpeg|png|gif)/i)) {
-      return toast.error("Poster must be a valid URL");
+  useEffect(() => {
+    if (movie) {
+      setValue("poster", movie.poster || "");
+      setValue("title", movie.title || "");
+      setValue("genre", movie.genre || "");
+      setValue("duration", movie.duration || "");
+      setValue("year", movie.year || "");
+      setValue("summary", movie.summary || "");
+      setValue("rating", movie.rating || 0);
     }
+  }, [movie, setValue]);
 
-    if (formData.title.length < 2) {
-      return toast.error("Title must be at least 2 characters");
-    }
-
-    if (!formData.genre) {
-      return toast.error("Genre is required");
-    }
-    if (formData.duration <= 60) {
-      return toast.error("Duration must be greater than 60 minutes");
-    }
-    if (!formData.year) {
-      return toast.error("Year is required");
-    }
-    if (rating === 0) {
-      return toast.error("Rating is required");
-    }
-    if (formData.summary.length < 10) {
-      return toast.error("Summary must be at least 10 characters");
-    }
-
-    // Submit Data
-    const updatedData = { ...formData, rating, user: `${user?.email}` };
-    // console.log("Movie Data:", movieData);
-    // toast.success("Movie added successfully!");
+  const onSubmit = (data) => {
+    const updatedData = { ...data, user: `${user?.email}` };
 
     fetch(`http://localhost:5000/movies/${movie._id}`, {
       method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedData),
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
+      .then((result) => {
+        if (result.modifiedCount > 0) {
           toast.success("Movie updated successfully!");
           navigate("/");
         } else {
           toast.error("Failed to update movie.");
         }
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("An error occurred while updating the movie.");
       });
   };
@@ -104,28 +62,24 @@ const UpdateMovie = () => {
         <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
           Update Movie
         </h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Movie Title */}
             <div>
               <label className="block mb-2 font-medium">Movie Title</label>
               <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
+                {...register("title", { required: "Title is required", minLength: 2 })}
                 placeholder="Enter movie title"
                 className="input input-bordered w-full bg-gray-800 text-white"
               />
+              {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
             </div>
 
             {/* Genre */}
             <div>
               <label className="block mb-2 font-medium">Genre</label>
               <select
-                name="genre"
-                value={formData.genre}
-                onChange={handleInputChange}
+                {...register("genre", { required: "Genre is required" })}
                 className="select select-bordered w-full bg-gray-800 text-white"
               >
                 <option value="">Select Genre</option>
@@ -135,30 +89,26 @@ const UpdateMovie = () => {
                   </option>
                 ))}
               </select>
+              {errors.genre && <p className="text-red-500 text-sm">{errors.genre.message}</p>}
             </div>
 
             {/* Duration */}
             <div>
-              <label className="block mb-2 font-medium">
-                Duration (minutes)
-              </label>
+              <label className="block mb-2 font-medium">Duration (minutes)</label>
               <input
                 type="number"
-                name="duration"
-                value={formData.duration}
-                onChange={handleInputChange}
+                {...register("duration", { required: "Duration is required", min: 60 })}
                 placeholder="Enter duration"
                 className="input input-bordered w-full bg-gray-800 text-white"
               />
+              {errors.duration && <p className="text-red-500 text-sm">{errors.duration.message}</p>}
             </div>
 
             {/* Release Year */}
             <div>
               <label className="block mb-2 font-medium">Release Year</label>
               <select
-                name="year"
-                value={formData.year}
-                onChange={handleInputChange}
+                {...register("year", { required: "Year is required" })}
                 className="select select-bordered w-full bg-gray-800 text-white"
               >
                 <option value="">Select Year</option>
@@ -168,46 +118,52 @@ const UpdateMovie = () => {
                   </option>
                 ))}
               </select>
+              {errors.year && <p className="text-red-500 text-sm">{errors.year.message}</p>}
             </div>
+
             {/* Movie Poster */}
             <div className="col-span-2">
-              <label className="block mb-2 font-medium">
-                Movie Poster (URL)
-              </label>
+              <label className="block mb-2 font-medium">Movie Poster (URL)</label>
               <input
-                type="text"
-                name="poster"
-                value={formData.poster}
-                onChange={handleInputChange}
+                {...register("poster", {
+                  required: "Poster URL is required",
+                  pattern: {
+                    value: /https?:\/\/.+\.(jpg|jpeg|png|gif)/i,
+                    message: "Invalid URL format",
+                  },
+                })}
                 placeholder="Enter poster URL"
                 className="input input-bordered w-full bg-gray-800 text-white"
               />
+              {errors.poster && <p className="text-red-500 text-sm">{errors.poster.message}</p>}
             </div>
           </div>
+
           {/* Rating */}
           <div>
             <label className="block mt-3 font-medium">Rating</label>
             <Rating
-              onClick={handleRatingChange}
-              ratingValue={rating}
+              {...register("rating", { required: "Rating is required" })}
+              onClick={(rate) => setValue("rating", rate)}
+              ratingValue={movie?.rating}
               size={30}
               fillColor="red"
               emptyColor="gray"
               className="mt-2"
             />
+            {errors.rating && <p className="text-red-500 text-sm">{errors.rating.message}</p>}
           </div>
 
           {/* Summary */}
           <div className="mt-6">
             <label className="block mb-2 font-medium">Summary</label>
             <textarea
-              name="summary"
-              value={formData.summary}
-              onChange={handleInputChange}
+              {...register("summary", { required: "Summary is required", minLength: 10 })}
               placeholder="Enter a short summary"
               className="textarea textarea-bordered w-full bg-gray-800 text-white"
               rows="4"
             ></textarea>
+            {errors.summary && <p className="text-red-500 text-sm">{errors.summary.message}</p>}
           </div>
 
           {/* Submit Button */}

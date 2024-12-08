@@ -1,8 +1,23 @@
-# React + Vite
+# [Movie Portal]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **[Movie Portal]**.
 
-Currently, two official plugins are available:
+##  Live Site
+[Visit the Live Website](#)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+##  Features
+1. **Dark/Light Theme Toggle**: Start in dark mode by default, with the ability to switch to light mode.
+2. **User Authentication**: Secure login and sign Up for personalized experiences.
+3. **Dynamic Data Management**: Real-time updates and seamless navigation using modern tools like React Router and Tailwind CSS.
+4. **Interactive Forms**: Forms with validation for user inputs using React Hook Form.
+5. **Responsive Design**: Fully mobile-friendly and desktop-optimized layouts for all devices.
+
+##  Technologies Used
+- **Frontend**: React, Tailwind CSS, DaisyUI
+- **Backend**: Node.js, Express, MongoDB
+- **Utilities**: React Hook Form, React Router DOM, React Hot Toast
+
+
+
+

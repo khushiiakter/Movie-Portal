@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 
 // #5f1a89  #5f1a89 btn #181c20  #101318 #1f1e24 #17161c
 const MainLayouts = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     
   };

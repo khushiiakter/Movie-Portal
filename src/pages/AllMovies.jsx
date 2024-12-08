@@ -15,7 +15,7 @@ const AllMovies = () => {
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
-    <section className="container mx-auto lg:px-8 px-4 ">
+    <section className="container pb-16 mx-auto lg:px-8 px-4 ">
       <h1 className="text-[#5f1a89] text-center text-5xl py-7 font-extrabold">All Movies</h1>
 
        {/* Search Input */}

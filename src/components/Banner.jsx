@@ -9,7 +9,7 @@ const Banner = () => {
     });
   }, []);
   return (
-    <div className="carousel w-full lg:h-[700px]">
+    <div className="carousel w-full lg:h-[720px]">
       <div
         id="banner1"
         className="carousel-item relative w-full ">
