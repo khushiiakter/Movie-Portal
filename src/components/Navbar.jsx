@@ -105,7 +105,7 @@ const Navbar = ({theme, toggleTheme}) => {
       <div className="navbar-center  hidden lg:flex">
         <ul className="menu menu-horizontal  px-1 text-white">{links}</ul>
       </div>
-      <div>
+      <div className="md:block hidden">
         <label className="flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
