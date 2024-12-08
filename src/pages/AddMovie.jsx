@@ -3,9 +3,11 @@ import { useContext, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [rating, setRating] = useState(0);
   const [formData, setFormData] = useState({
     poster: "",
@@ -16,8 +18,8 @@ const AddMovie = () => {
     summary: "",
   });
 
-  const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi"];
-  const years = ["2024", "2023", "2022", "2021", "2020"];
+  const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi", "Fantasy", "Romance"];
+  const years = ["2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,6 +84,7 @@ const AddMovie = () => {
         console.log(data);
         if (data.insertedId) {
           toast.success("Movie added successfully!");
+          navigate("/all-movie");
         }
       });
   };
@@ -183,6 +186,7 @@ const AddMovie = () => {
               emptyColor="gray"
               className="mt-2"
             />
+           
           </div>
 
           {/* Summary */}

@@ -31,8 +31,9 @@ const UpdateMovie = () => {
       setRating(movie.rating || 0);
     }
   }, [movie]);
-  const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi"];
-  const years = ["2024", "2023", "2022", "2021", "2020"];
+  const genres = ["Comedy", "Drama", "Horror", "Action", "Sci-Fi", "Fantasy", "Romance"];
+  const years = ["2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
