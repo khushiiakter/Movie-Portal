@@ -24,12 +24,12 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home></Home>,
-          loader: () => fetch('http://localhost:5000/top-rated-movies')
+          loader: () => fetch('https://assignmet-10-server.vercel.app/top-rated-movies')
         },
         {
           path: "/all-movie",
           element: <AllMovies></AllMovies>,
-          loader: () => fetch('http://localhost:5000/movies')
+          loader: () => fetch('https://assignmet-10-server.vercel.app/movies')
         },
         {
           path: "/add-movie",
@@ -42,14 +42,14 @@ const router = createBrowserRouter([
         {
           path: "/update-movie/:id",
           element: <PrivateRoute><UpdateMovie></UpdateMovie></PrivateRoute>,
-          loader:  ({ params }) =>  fetch(`http://localhost:5000/movies/${params.id}`).then(res => res.json()),
+          loader:  ({ params }) =>  fetch(`https://assignmet-10-server.vercel.app/movies/${params.id}`).then(res => res.json()),
                   
         },
         {
           path: "/movie-details/:id",
           element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
           loader: ({params}) =>
-             fetch(`http://localhost:5000/movies/${params.id}`),
+             fetch(`https://assignmet-10-server.vercel.app/movies/${params.id}`),
             
           
         },

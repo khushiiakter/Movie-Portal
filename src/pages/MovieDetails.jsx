@@ -18,7 +18,7 @@ const MovieDetails = () => {
   const handleAddToFavorites = () => {
    const { _id, ...favoriteMovie} = movie;
    const newMovie = { ...favoriteMovie, userEmail: `${user.email}`};
-    fetch("http://localhost:5000/favorites", {
+    fetch("https://assignmet-10-server.vercel.app/favorites", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const MovieDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${movie._id}`, {
+        fetch(`https://assignmet-10-server.vercel.app/movies/${movie._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -35,7 +35,7 @@ const UpdateMovie = () => {
   const onSubmit = (data) => {
     const updatedData = { ...data, user: `${user?.email}` };
 
-    fetch(`http://localhost:5000/movies/${movie._id}`, {
+    fetch(`https://assignmet-10-server.vercel.app/movies/${movie._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

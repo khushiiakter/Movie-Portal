@@ -3,10 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html{
+    scrollbar-width: none;
+}
 svg.star-svg {
     display: inline;
 }
+
 body{
     margin: 0;
     padding: 0;

@@ -7,13 +7,13 @@ const MyFavorites = () => {
   const [favorites, setFavorites] = useState([]);
   // const favorites = useLoaderData()
   useEffect(() => {
-    fetch(`http://localhost:5000/favorites?email=${user.email}`)
+    fetch(`https://assignmet-10-server.vercel.app/favorites?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setFavorites(data));
   }, [user.email]);
 
   const handleDeleteFavorite = (id) => {
-    fetch(`http://localhost:5000/favorites/${id}`, {
+    fetch(`https://assignmet-10-server.vercel.app/favorites/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

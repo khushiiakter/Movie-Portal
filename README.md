@@ -3,7 +3,7 @@
 Welcome to **[Movie Portal]**.
 
 ##  Live Site
-[Visit the Live Website](#)  
+[Visit the Live Website](https://assignment-10-bf625.web.app/)  
 
 
 ##  Features

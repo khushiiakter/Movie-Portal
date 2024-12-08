@@ -72,7 +72,7 @@ const AddMovie = () => {
     });
     setRating(0);
 
-    fetch("http://localhost:5000/movies", {
+    fetch("https://assignmet-10-server.vercel.app/movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",
