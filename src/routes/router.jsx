@@ -13,6 +13,7 @@ import MovieDetails from "../pages/MovieDetails";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import UpdateMovie from "../pages/UpdateMovie";
+import AboutUs from "../pages/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
           path: "/add-movie",
           element: <PrivateRoute><AddMovie></AddMovie></PrivateRoute>,
+        },
+        {
+          path: "/aboutUs",
+          element: <AboutUs></AboutUs>,
         },
         {
           path: "/update-movie/:id",

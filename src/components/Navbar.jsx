@@ -62,6 +62,14 @@ const Navbar = () => {
           My Favorites
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/aboutUs"
+          
+        >
+          About US
+        </NavLink>
+      </li>
     </>
   );
 
@@ -92,7 +100,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className=" md:text-xl ">Movie Mania</a>
+        <a className=" md:text-2xl font-bold">Movie Portal</a>
       </div>
       <div className="navbar-center  hidden lg:flex">
         <ul className="menu menu-horizontal  px-1 text-white">{links}</ul>

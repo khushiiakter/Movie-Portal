@@ -46,9 +46,9 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex justify-center items-center md:py-7  bg-[#f2f4ff]">
-      <div className="card bg-[#e3e5f3d5]  w-full  md:max-w-lg shrink-0 md:border-2 border-[#556180] md:rounded-3xl rounded-none md:p-9 px-1 py-6">
-        <h2 className="text-3xl font-semibold text-center">
+    <div className=" flex justify-center items-center md:py-7  bg-[#101318]">
+      <div className="card bg-gray-900  w-full  md:max-w-lg shrink-0 md:border-2 border-[#5f1a89] md:rounded-3xl rounded-none md:p-9 px-1 py-6">
+        <h2 className="text-3xl text-white font-semibold text-center">
           Login your account
         </h2>
         <form onSubmit={handleSubmit} className="card-body">
@@ -92,21 +92,21 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-3">
-            <button className="btn btn-neutral rounded-full">Login</button>
+            <button className="btn btn-neutral bg-[#5f1a89]  hover:bg-red-800  rounded-full">Login</button>
           </div>
 
-          <div className="divider text-black">OR</div>
+          <div className="divider text-gray-400 ">OR</div>
 
           <button
             onClick={handleGoogleLogin}
-            className="btn btn-outline rounded-full"
+            className="btn btn-outline text-gray-400 rounded-full"
           >
             Continue with Google
           </button>
         </form>
-        <p className="text-center font-semibold">
+        <p className="text-center text-gray-400 font-semibold">
           Don't Have An Account ?{" "}
-          <Link className="text-red-500" to="/auth/register">
+          <Link className="text-[#5f1a89] hover:text-red-800 " to="/auth/register">
             Register
           </Link>
         </p>
