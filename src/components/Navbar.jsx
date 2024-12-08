@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import profile from "../assets/blank-profile-picture-973460_640.png";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -103,7 +103,7 @@ const Navbar = () => {
           <>
             <div className="relative group hidden md:block">
               <img
-                src={user?.photoURL || {profile}}
+                src={user?.photoURL || `${"https://i.ibb.co.com/Rh2DLGL/blank-profile-picture-973460-640.png"}`}
                 alt="Profile"
                 className="border-2 border-[#e3e5f3d5] w-11 h-11 mr-2 rounded-full object-cover cursor-pointer ml-16"
               />
