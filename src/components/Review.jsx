@@ -28,7 +28,7 @@ const Review = () => {
   ];
   return (
     <section className=" text-white py-14 px-6">
-      <h2 className="text-5xl font-extrabold text-center my-6">
+      <h2 className="text-5xl text-[#5f1a89] font-extrabold text-center my-6">
         What Our Users Say
       </h2>
       <p className="text-center text-gray-400 py-4">

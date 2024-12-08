@@ -25,7 +25,7 @@ const MyFavorites = () => {
 
   return (
     <div className="container mx-auto px-5 ">
-      <h1 className="text-white text-center text-5xl py-8 font-bold">
+      <h1 className="text-[#5f1a89] text-center text-5xl py-8 font-bold">
         My Favorite Movies
       </h1>
 

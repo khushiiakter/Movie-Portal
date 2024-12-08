@@ -35,10 +35,10 @@ const Membership = () => {
   return (
     <div className=" text-white py-14 px-5">
       <div className="max-w-6xl mx-auto">
-        <h2 className="md:text-5xl text-3xl font-bold text-white mb-6 text-center">
+        <h2 className="md:text-5xl  text-3xl font-bold text-[#5f1a89] mb-6 text-center">
           Membership Plans
         </h2>
-        <p className="text-gray-400 text-center my-6">
+        <p className="text-gray-500 text-center my-6">
           Unlock premium features and enjoy exclusive benefits.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 py-10 gap-6">

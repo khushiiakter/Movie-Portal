@@ -25,7 +25,7 @@ const Movie = ({ movie }) => {
           </span>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between  items-center">
           <div className="flex gap-2 ">
             <p className="text-sm text-gray-400">{genre}</p>
             <p className="text-sm text-gray-400 border-gray-400 border-x px-2">
