@@ -1,7 +1,13 @@
+import logo from "../assets/logo.png"
 const Footer = () => {
   return (
-    <footer className="  bg-black text-neutral-content p-10 max-w-full">
-      <div className="footer grid grid-cols-1 md:grid-cols-3">
+    <footer className="  bg-[#5e1a8938]  text-neutral-content py-10 max-w-full">
+      <div className="footer mx-auto px-5 container grid grid-cols-1 md:grid-cols-4">
+      <nav className="flex flex-col items-center">
+        <img src={logo} className="w-16 text-center" alt="" />
+          <a className="  gap-1 md:text-2xl font-bold">
+            Movie Portal</a>
+        </nav>
         <nav>
           <h6 className="footer-title">Explore</h6>
           <a className="link link-hover">Featured Movies</a>

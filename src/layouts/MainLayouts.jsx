@@ -25,11 +25,11 @@ const MainLayouts = () => {
   }, [theme]);
   return (
     <div>
-      <nav className="md:px-6 bg-black -px-4">
+      <nav className="  ">
         <Navbar theme={theme} toggleTheme={toggleTheme}></Navbar>
       </nav>
 
-      <section className=" min-h-screen">
+      <section className=" ">
         <Outlet theme={theme} toggleTheme={toggleTheme}></Outlet>
       </section>
 

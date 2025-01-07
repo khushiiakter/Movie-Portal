@@ -1,80 +1,32 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { Link, NavLink, useLocation } from "react-router-dom";
-
-
-
-const Navbar = ({theme, toggleTheme}) => {
-  const location = useLocation();
+import { Link, NavLink } from "react-router-dom";
+import logo from "../assets/logo.png"
+const Navbar = ({ theme, toggleTheme }) => {
   const { user, logOut } = useContext(AuthContext);
 
-  const links = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          // onClick={(e) => e.currentTarget.blur()}
-          // className={({ isActive }) =>
-          //   isActive
-          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-          //     : "bg-[#0F1035] text-[#e1e4fa]   rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]  "
-          // }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-movie"
-          // onClick={(e) => e.currentTarget.blur()}
-          // className={({ isActive }) =>
-          //   isActive
-          //     ? "bg-[#e1e4fa] text-[#0F1035]    rounded-lg  "
-          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg hover:bg-[#e1e4fa]  hover:text-[#0F1035]    "
-          // }
-        >
-          All Movies
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/add-movie"
-          // onClick={(e) => e.currentTarget.blur()}
-          // className={({ isActive }) =>
-          //   isActive
-          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
-          // }
-        >
-          Add Movie
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-favorites"
-          // onClick={(e) => e.currentTarget.blur()}
-          // className={({ isActive }) =>
-          //   isActive
-          //     ? "bg-[#e1e4fa] text-[#0F1035]   rounded-lg  "
-          //     : "bg-[#0F1035] text-[#e1e4fa]    rounded-lg  hover:bg-[#e1e4fa]  hover:text-[#0F1035]   "
-          // }
-        >
-          My Favorites
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/aboutUs"
-          
-        >
-          About US
-        </NavLink>
-      </li>
-    </>
-  );
+  // const links = (
+  //   <>
+  //     <li>
+  //       <NavLink to="/">Home</NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink to="/all-movie">All Movies</NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink to="/add-movie">Add Movie</NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink to="/my-favorites">My Favorites</NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink to="/aboutUs">About US</NavLink>
+  //     </li>
+  //   </>
+  // );
 
   return (
-    <div className="navbar  text-white ">
+    <div className="navbar fixed z-50 md:px-6   w-full  backdrop-blur-2xl bg-black -px-4 text-white ">
       <div className="navbar-start  ">
         <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -97,13 +49,157 @@ const Navbar = ({theme, toggleTheme}) => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-[#0F1035] text-[#e1e4fa] rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {links}
+            {user ? (
+          <ul className="menu menu-horizontal  px-1 text-white">
+            <li>
+        <NavLink
+          to="/"
+         
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-movie"
+          
+        >
+          All Movies
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/add-movie"
+          
+        >
+          Add Movie
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/my-favorites"
+          
+        >
+          My Favorites
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/aboutUs"
+          
+        >
+          About US
+        </NavLink>
+      </li>
+          </ul>
+        ) : (
+          <ul className="menu menu-horizontal  px-1 text-white">
+            <li>
+        <NavLink
+          to="/"
+         
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-movie"
+          
+        >
+          All Movies
+        </NavLink>
+      </li>
+     
+      
+      <li>
+        <NavLink
+          to="/aboutUs"
+          
+        >
+          About US
+        </NavLink>
+      </li>
+          </ul>
+        )}
           </ul>
         </div>
-        <a className=" md:text-2xl font-bold">Movie Portal</a>
+        <a className="flex items-center gap-1 md:text-2xl font-bold"><img src={logo} className="w-8" alt="" />Movie Portal</a>
       </div>
       <div className="navbar-center  hidden lg:flex">
-        <ul className="menu menu-horizontal  px-1 text-white">{links}</ul>
+        {user ? (
+          <ul className="menu menu-horizontal  px-1 text-white">
+            <li>
+        <NavLink
+          to="/"
+         
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-movie"
+          
+        >
+          All Movies
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/add-movie"
+          
+        >
+          Add Movie
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/my-favorites"
+          
+        >
+          My Favorites
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/aboutUs"
+          
+        >
+          About US
+        </NavLink>
+      </li>
+          </ul>
+        ) : (
+          <ul className="menu menu-horizontal  px-1 text-white">
+            <li>
+        <NavLink
+          to="/"
+         
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-movie"
+          
+        >
+          All Movies
+        </NavLink>
+      </li>
+     
+      
+      <li>
+        <NavLink
+          to="/aboutUs"
+          
+        >
+          About US
+        </NavLink>
+      </li>
+          </ul>
+        )}
       </div>
       <div className="md:block hidden">
         <label className="flex cursor-pointer gap-2">
@@ -140,7 +236,6 @@ const Navbar = ({theme, toggleTheme}) => {
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-          
         </label>
       </div>
       <div className="navbar-end">
@@ -148,7 +243,10 @@ const Navbar = ({theme, toggleTheme}) => {
           <>
             <div className="relative group hidden md:block">
               <img
-                src={user?.photoURL || `${"https://i.ibb.co.com/Rh2DLGL/blank-profile-picture-973460-640.png"}`}
+                src={
+                  user?.photoURL ||
+                  `${"https://i.ibb.co.com/Rh2DLGL/blank-profile-picture-973460-640.png"}`
+                }
                 alt="Profile"
                 className="border-2 border-[#e3e5f3d5] w-11 h-11 mr-2 rounded-full object-cover cursor-pointer ml-16"
               />
@@ -161,7 +259,7 @@ const Navbar = ({theme, toggleTheme}) => {
             </div>
             <Link
               onClick={logOut}
-              className="btn bg-[#5f1a89] rounded-2xl px-5 text-white hover:border-white border-neutral hover:bg-black"
+              className="px-5 py-2 bg-[#5f1a89] rounded-2xl  text-white  font-semibold hover:border-white border-neutral hover:bg-red-800"
             >
               Log Out
             </Link>
@@ -170,13 +268,13 @@ const Navbar = ({theme, toggleTheme}) => {
           <>
             <Link
               to="/auth/login"
-              className="btn bg-[#5f1a89] rounded-2xl mr-2 px-5 text-white hover:border-white border-neutral hover:bg-black"
+              className="px-5 py-2 bg-[#5f1a89] rounded-2xl mr-2  text-white  font-semibold hover:border-white border-neutral hover:bg-red-800"
             >
               Login
             </Link>
             <Link
               to="/auth/register"
-              className="btn bg-[#5f1a89] rounded-2xl px-5 text-white hover:border-white border-neutral hover:bg-black"
+              className="px-5 py-2  font-semibold bg-[#5f1a89] border-black   rounded-2xl border  text-white  hover:bg-red-800"
             >
               Register
             </Link>

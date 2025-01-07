@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/movie-details/:id",
-          element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
+          element: <MovieDetails></MovieDetails>,
           loader: ({params}) =>
              fetch(`https://assignmet-10-server.vercel.app/movies/${params.id}`),
             
