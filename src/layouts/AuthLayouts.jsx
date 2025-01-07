@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 const AuthLayouts = () => {
     return (
         <div>
-            <section>
+            <section >
                 <Outlet></Outlet>
             </section>
             

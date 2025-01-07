@@ -46,8 +46,8 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex justify-center items-center md:py-7  bg-[#101318]">
-      <div className="card bg-gray-900  w-full  md:max-w-lg shrink-0 md:border-2 border-[#5f1a89] md:rounded-3xl rounded-none md:p-9 px-1 py-6">
+    <div className=" flex justify-center items-center md:py-5  bg-[#101318]">
+      <div className="card bg-gray-900  w-full mt-[68px]  md:max-w-lg shrink-0 md:border-2 border-[#5f1a89] md:rounded-3xl rounded-none md:p-9 px-1 py-6">
         <h2 className="text-3xl text-white font-semibold text-center">
           Login your account
         </h2>

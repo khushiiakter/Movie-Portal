@@ -29,7 +29,7 @@ const MainLayouts = () => {
         <Navbar theme={theme} toggleTheme={toggleTheme}></Navbar>
       </nav>
 
-      <section className=" ">
+      <section className=" min-h-screen ">
         <Outlet theme={theme} toggleTheme={toggleTheme}></Outlet>
       </section>
 

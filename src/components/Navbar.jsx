@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 const Navbar = ({ theme, toggleTheme }) => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -50,154 +50,75 @@ const Navbar = ({ theme, toggleTheme }) => {
             className="menu menu-sm dropdown-content bg-[#0F1035] text-[#e1e4fa] rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {user ? (
-          <ul className="menu menu-horizontal  px-1 text-white">
-            <li>
-        <NavLink
-          to="/"
-         
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-movie"
-          
-        >
-          All Movies
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/add-movie"
-          
-        >
-          Add Movie
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-favorites"
-          
-        >
-          My Favorites
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/aboutUs"
-          
-        >
-          About US
-        </NavLink>
-      </li>
-          </ul>
-        ) : (
-          <ul className="menu menu-horizontal  px-1 text-white">
-            <li>
-        <NavLink
-          to="/"
-         
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-movie"
-          
-        >
-          All Movies
-        </NavLink>
-      </li>
-     
-      
-      <li>
-        <NavLink
-          to="/aboutUs"
-          
-        >
-          About US
-        </NavLink>
-      </li>
-          </ul>
-        )}
+              <ul className="menu menu-horizontal  px-1 text-white">
+                <li>
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/all-movie">All Movies</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/add-movie">Add Movie</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/my-favorites">My Favorites</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/aboutUs">About US</NavLink>
+                </li>
+              </ul>
+            ) : (
+              <ul className="menu menu-horizontal  px-1 text-white">
+                <li>
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/all-movie">All Movies</NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="/aboutUs">About US</NavLink>
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
-        <a className="flex items-center gap-1 md:text-2xl font-bold"><img src={logo} className="w-8" alt="" />Movie Portal</a>
+        <div className="flex items-center  gap-1 md:text-2xl font-bold">
+          <img src={logo} className="w-7" alt="" />
+          <a>Movie Portal</a>
+        </div>
       </div>
       <div className="navbar-center  hidden lg:flex">
         {user ? (
           <ul className="menu menu-horizontal  px-1 text-white">
             <li>
-        <NavLink
-          to="/"
-         
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-movie"
-          
-        >
-          All Movies
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/add-movie"
-          
-        >
-          Add Movie
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-favorites"
-          
-        >
-          My Favorites
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/aboutUs"
-          
-        >
-          About US
-        </NavLink>
-      </li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/all-movie">All Movies</NavLink>
+            </li>
+            <li>
+              <NavLink to="/add-movie">Add Movie</NavLink>
+            </li>
+            <li>
+              <NavLink to="/my-favorites">My Favorites</NavLink>
+            </li>
+            <li>
+              <NavLink to="/aboutUs">About US</NavLink>
+            </li>
           </ul>
         ) : (
           <ul className="menu menu-horizontal  px-1 text-white">
             <li>
-        <NavLink
-          to="/"
-         
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-movie"
-          
-        >
-          All Movies
-        </NavLink>
-      </li>
-     
-      
-      <li>
-        <NavLink
-          to="/aboutUs"
-          
-        >
-          About US
-        </NavLink>
-      </li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/all-movie">All Movies</NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/aboutUs">About US</NavLink>
+            </li>
           </ul>
         )}
       </div>
