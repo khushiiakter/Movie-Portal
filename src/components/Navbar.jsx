@@ -85,7 +85,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         </div>
         <div className="flex items-center  gap-1 md:text-2xl font-bold">
           <img src={logo} className="w-7" alt="" />
-          <a>Movie Portal</a>
+          <a>Movie-Portal</a>
         </div>
       </div>
       <div className="navbar-center  hidden lg:flex">
