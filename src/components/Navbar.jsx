@@ -60,9 +60,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 <li>
                   <NavLink to="/aboutUs">About US</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/aboutUs">About me</NavLink>
-                </li>
+               
               </ul>
             )}
           </ul>
