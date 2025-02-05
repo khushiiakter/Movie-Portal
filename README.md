@@ -6,8 +6,7 @@ Welcome to **Movie Portal**, your go-to platform for managing and exploring movi
 [Visit the Live Website](https://assignment-10-bf625.web.app/)
 
 ## 📸 Screenshot
-![Movie Portal Screenshot]
-(https://i.ibb.co.com/67VnWmkD/Screenshot-2025-02-05-152815.png) 
+![Movie Portal Screenshot](https://i.ibb.co.com/67VnWmkD/Screenshot-2025-02-05-152815.png)
 ## ✨ Features
 1. **Dark/Light Theme Toggle**: Default dark mode with a toggle for light mode.
 2. **User Authentication**: Secure login and sign-up for personalized user experiences.
