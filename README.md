@@ -30,7 +30,7 @@ Welcome to **Movie Portal**, your go-to platform for managing and exploring movi
 Follow these steps to set up the project locally:
 1. **Clone the repository:**
    ```sh
-   git clone [repository-url]
+   git clone https://github.com/khushiiakter/Movie-Portal
    ```
 2. **Navigate to the project folder:**
    ```sh
